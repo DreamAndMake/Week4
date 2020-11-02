@@ -58,7 +58,7 @@ testCaseDs <- read.csv(testCasesDsUrl, na.strings = c("", "NA"))
 ```
 
 ## Predict data for 20 cases
-```{r }
+```{r solve course quiz}
 projectQuizTestCasesDs<- predict(modelRF, testCaseDs)
 projectQuizTestCasesDs
 ```
