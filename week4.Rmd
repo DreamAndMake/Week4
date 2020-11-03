@@ -11,41 +11,41 @@ knitr::opts_chunk$set(echo = TRUE)
 Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, your goal will be to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website here: http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har (see the section on the Weight Lifting Exercise Dataset).
 
 ```{r set seed and load libs, message=FALSE}
-set.seed(02112020)
+set.seed(31120)
 library(caret)
 library(randomForest)
 library(e1071)
 ```
 
-## read training dataset
+## Read training dataset
 ```{r download training dataset, message=TRUE}
 trainDsUrl <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
 trainDs <- read.csv(trainDsUrl, na.strings = c("", "NA"))
 ```
 
-## remove NA columns
+## Remove NA columns
 ```{r clean up train dataset}
 colname <- colnames(trainDs)[!colSums(is.na(trainDs)) > 0]
 ```
 
-## create new dataset based on the test dataset without first 7 unimportant columns
+## Create new dataset based on the test dataset without first 7 unimportant columns
 ```{r also related to clean up train dataset}
 colname <- colname[8: length(colname)]
 cleanedTrainDs <- trainDs[colname]
 ```
 
-## partition the data 
+## Partition the data 
 ```{r partition the data}
 partitionedTrainDs = createDataPartition(cleanedTrainDs$classe, p = 3/4)[[1]]
 trainingDs = cleanedTrainDs[ partitionedTrainDs,]
 testingDs = cleanedTrainDs[-partitionedTrainDs,]
 ```
 
-## apply random forest due to the highest accuracy (it takes long time to train data!)
+## Apply random forest, it has the highest accuracy (it takes long time to train data!)
 ```{r random forest algorithm will predict test data based on trained data}
 modelRF <- train(classe ~ ., data = trainingDs, method = "rf")
 predictedDs <- predict(modelRF, testingDs)
-confusionMatrix(testingDs$classe, predictedDs)
+confusionMatrix(table(testingDs$classe, predictedDs))
 ```
 
 ## Course Project Prediction Quiz Portion
