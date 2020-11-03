@@ -24,5 +24,7 @@ Apply your machine learning algorithm to the 20 test cases available in the test
 
 ## Please, see my implementation:
 rmd:         https://github.com/DreamAndMake/Week4/blob/master/week4.Rmd
+
 html viewer: http://htmlpreview.github.io/?https://github.com/DreamAndMake/Week4/blob/master/week4.html
+
 raw html:    https://github.com/DreamAndMake/Week4/blob/master/week4.html
