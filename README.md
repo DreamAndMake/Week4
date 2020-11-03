@@ -21,3 +21,8 @@ Your submission for the Peer Review portion should consist of a link to a Github
 
 ## Course Project Prediction Quiz Portion
 Apply your machine learning algorithm to the 20 test cases available in the test data above and submit your predictions in appropriate format to the Course Project Prediction Quiz for automated grading.
+
+## Please, see my implementation:
+rmd:         https://github.com/DreamAndMake/Week4/blob/master/week4.Rmd
+html viewer: http://htmlpreview.github.io/?https://github.com/DreamAndMake/Week4/blob/master/week4.html
+raw html:    https://github.com/DreamAndMake/Week4/blob/master/week4.html
